@@ -55,7 +55,7 @@ template.innerHTML = `
     </div>
   </div>
   <style>
-    @import url("components/progress/progress-bar.css");
+    @import url("src/components/progress/progress-bar.css");
   </style>
   </div>
 `;

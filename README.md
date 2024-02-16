@@ -1,6 +1,8 @@
 # ozon-progress
 Тестовое задание Ozon - блок Progress.
 
+Репозиторий проекта: https://github.com/roman0vevgeny/ozon-progress
+
 
 Задание: 
 
