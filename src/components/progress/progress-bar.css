@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Manrope:wght@200..800&display=swap");    
+    
+    *, *::after, *::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* Псевдоэлемент, позволяющий получить доступ к стилям родителя (в обычном DOM) */
+    :host {
+      width: max-content;
+      --bkg: #fff;
+      --text: #232323;
+      --blue: #2164f3;
+      --gray: #eeeeee;
+    }
+
+    #progress-bar {
+      display: grid;
+      place-items: center;
+      gap: 5rem;
+      height: fit-content;
+      overflow: hidden;
+    }
+
+    .svg-container {
+      --dash-offset: 0;
+    }
+
+    .svg-container.hidden {
+      display: none;
+    }
+
+    svg {
+      transition: all 300ms ease-in-out;
+    }
+
+    .progress-circle {
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+      animation: fillProgress 4s ease-in-out forwards;
+      animation-iteration-count: 1;
+      animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .hidden {
+      display: none;
+      transition: all 300ms ease-in-out;
+    }
+
+    .animated {
+      animation-duration: 4s;
+      animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+      animation-iteration-count: 1;
+    }
+
+    .animated-infinite {
+      animation-iteration-count: infinite;
+    } 
+
+    @keyframes fillProgress {
+      0% {
+        stroke-dashoffset: 251.2;
+      }
+      100% {
+        stroke-dashoffset: var(--dash-offset);
+      }
+    }
+
+    input {
+      width: 55px;
+      height: 34px;
+      font-family: "Fredoka", sans-serif;
+      color: var(--text);
+      padding: 5px 10px;
+      border: solid 1px var(--text);
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      margin-right: 1rem;
+    }
+
+    input:focus {
+      outline: solid 2px var(--blue);
+      border: solid 1px var(--blue);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-rows: repeat(3, 50px [col-start]);
+      width: fit-content;
+      align-items: center;
+      line-height: 2rem;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    label {
+      margin-right: 1rem;
+    }
+
+    .button-container {
+      display: flex;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 55px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--gray);
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 30px;
+      width: 30px;
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--bkg);
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: var(--blue);
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px var(--gray);
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(21px);
+      -ms-transform: translateX(21px);
+      transform: translateX(21px);
+    }
+
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    @media (orientation: landscape) {
+      #progress-bar {
+        display: flex;
+      }
+    }
