@@ -71,9 +71,7 @@ template.innerHTML = `
 
       connectedCallback() {
         this.svg = this.shadowRoot.querySelector(".svg-container");
-   
         this.progress = this.shadowRoot.querySelector(".progress-circle");
- 
         this.circles = this.shadowRoot.querySelectorAll("circle");
         this.circle = this.circles[1];
         this.valueInput = this.shadowRoot.getElementById("value");
@@ -96,26 +94,17 @@ template.innerHTML = `
       addEventListeners() {
         this.valueInput.addEventListener("change", () => {
           const value = this.valueInput.value;
-          console.log("Value input: " + this.valueInput.value);
           this.updateDashOffset(value);
         });
 
         this.valueInput.addEventListener("keypress", (event) => {
           if (event.key === "Enter") {
             const value = this.valueInput.value;
-            console.log("Value input: " + this.valueInput.value);
-            if (!this.progress.classList.contains("animated")) {
-              this.progress.classList.add("animated");
-              setTimeout(() => {
-                this.progress.classList.remove("animated");
-              }, 4000);
-            }
             this.updateDashOffset(value);
           }
         });
 
         this.animateCheckbox.addEventListener("change", () => {
-          console.log("Animate checkbox: " + this.animateCheckbox.checked);
           if (this.animateCheckbox.checked) {
             this.startAnimation();
           } else {
@@ -124,7 +113,6 @@ template.innerHTML = `
         });
 
         this.hideCheckbox.addEventListener("change", () => {
-          console.log("Hide checkbox: " + this.hideCheckbox.checked);
           this.toggleVisibility();
         });
       }
@@ -141,7 +129,7 @@ template.innerHTML = `
     
       attributeChangedCallback(name, oldValue, newValue) {
         if (name === "data-value" && this.valueInput) {
-          this.valueInput.value = newValue || "75";
+          this.valueInput.value = newValue;
           this.updateDashOffset(this.valueInput.value);
         } else if (name === "animated" && this.animateCheckbox) {
           this.animateCheckbox.checked = newValue === "true";

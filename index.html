@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progress Bar</title>
     <link rel="stylesheet" href="src/style.css">
     <script src="src/index.js" defer></script>
-    <!-- Импортирую кастомный web-компонент -->
     <script type="module" src="src/components/progress/progressBar.js" defer></script>
   </head>
   <body>
     <main>
-      <!-- Использую компонент. И могу удобно переиспользовать где угодно. Стили компонента инкапсулированы -->
-      <progress-bar data-value= "75" animated="true" hide="false"></progress-bar>
+      <p>Progress</p>
+      <progress-bar data-value= "75" animated="false" hide="false"></progress-bar>
     </main>
   </body>
 </html>

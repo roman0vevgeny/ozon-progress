@@ -1,2 +1,2 @@
-// const progressBar = document.querySelector("progress-bar");
+const progressBar = document.querySelector("progress-bar");
 
